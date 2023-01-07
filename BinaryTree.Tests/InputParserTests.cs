@@ -37,7 +37,7 @@ namespace BinaryTree.Tests
 
             var inputValidator = new InputParser();
             List<int> validatedInput;
-            var actual = inputValidator.ParseInput(input, out validatedInput);
+            bool actual = inputValidator.ParseInput(input, out validatedInput);
 
             Assert.AreEqual(expected, actual);
         }
@@ -50,7 +50,7 @@ namespace BinaryTree.Tests
 
             var inputValidator = new InputParser();
             List<int> validatedInput;
-            var actual = inputValidator.ParseInput(input, out validatedInput);
+            bool actual = inputValidator.ParseInput(input, out validatedInput);
 
             Assert.AreEqual(expected, actual);
         }
@@ -63,7 +63,7 @@ namespace BinaryTree.Tests
 
             var inputValidator = new InputParser();
             List<int> validatedInput;
-            var actual = inputValidator.ParseInput(input, out validatedInput);
+            bool actual = inputValidator.ParseInput(input, out validatedInput);
 
             Assert.AreEqual(expected, actual);
         }
