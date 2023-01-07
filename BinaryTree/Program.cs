@@ -20,7 +20,7 @@
             }
 
             var treeRepo = new TreeRepo();
-            var fileName = await treeRepo.SaveTree(tree);            
+            await treeRepo.SaveTree(tree);            
 
             var outputBuilder = new OutputBuilder();
             string output = outputBuilder.BuildOutput(tree);
