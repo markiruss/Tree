@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "BinaryTree": {
+      "commandName": "Project",
+      "commandLineArgs": "15,10,22,4,12,18,24"
+    }
+  }
+}
