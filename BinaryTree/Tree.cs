@@ -6,6 +6,7 @@
         {
             Value = num;
         }
+        
         public Tree()
         {
             

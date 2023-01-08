@@ -26,11 +26,6 @@
             string output = outputBuilder.BuildOutput(tree);
 
             Console.WriteLine(output);
-        }
-
-        public static void InputError()
-        {
-            Console.WriteLine("Please supply a comma separated list of positive numbers as an argument");
-        }
+        }       
     }
 }
