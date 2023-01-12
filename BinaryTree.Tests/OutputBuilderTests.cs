@@ -1,23 +1,32 @@
+using BinaryTree.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
+
 namespace BinaryTree.Tests
 {
     [TestClass]
     public class OutputBuilderTests
     {
+        IOutputBuilder _outputBuilder;
+
+        public OutputBuilderTests()
+        {
+            var serviceProvider = new ServiceCollection()                
+                .AddSingleton<IOutputBuilder, OutputBuilder>()                
+                .BuildServiceProvider();
+
+            _outputBuilder = serviceProvider.GetService<IOutputBuilder>();
+        }
+
         [TestMethod]
         public void Builds_CorrectOrder()
         {
             var input = new int[] { 15, 10, 22, 4, 12, 18, 24 };
             var expected = "4, 12, 10, 18, 24, 22, 15";
             
-            var tree = new Tree(input[0]);
+            var tree = new BinaryTree();
+            tree.BuildTree(input.ToList());
 
-            for (int i = 1; i < input.Length; i++)
-            {
-                tree.Insert(input[i]);
-            }
-
-            var outputBuilder = new OutputBuilder();
-            string actual = outputBuilder.BuildOutput(tree);
+            string actual = _outputBuilder.BuildOutput(tree);
 
             Assert.AreEqual(expected, actual);
         }

@@ -5,7 +5,7 @@ namespace BinaryTree
 {
     public class OutputBuilder : IOutputBuilder
     {
-        public string BuildOutput(ITree tree)
+        public string BuildOutput(BinaryTree tree)
         {
             var sb = new StringBuilder();
 

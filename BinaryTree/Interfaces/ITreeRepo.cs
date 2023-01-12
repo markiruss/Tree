@@ -8,7 +8,7 @@ namespace BinaryTree.Interfaces
 {
     public interface ITreeRepo
     {
-        Task<string> SaveTree(ITree tree);
-        Task<ITree?> ReadTree(string filePath);
+        Task<string> SaveTree(BinaryTree tree);
+        Task<BinaryTree?> ReadTree(string filePath);
     }
 }

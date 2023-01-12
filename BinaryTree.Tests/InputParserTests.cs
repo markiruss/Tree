@@ -1,17 +1,30 @@
+using BinaryTree.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
+
 namespace BinaryTree.Tests
 {
     [TestClass]
     public class InputParserTests
     {
+        IInputParser _inputParser;
+
+        public InputParserTests()
+        {
+            var serviceProvider = new ServiceCollection()
+               .AddSingleton<IInputParser, InputParser>()
+               .BuildServiceProvider();
+
+            _inputParser = serviceProvider.GetService<IInputParser>();
+        }
+
         [TestMethod]
         public void CorrectInput_Validates()
         {            
             var input = new string[] { "4, 12, 10, 18, 24, 22, 15" };
             bool expected = true;
-            
-            var inputValidator = new InputParser();
+                        
             List<int> validatedInput;
-            var actual = inputValidator.ParseInput(input, out validatedInput);
+            var actual = _inputParser.ParseInput(input, out validatedInput);
 
             Assert.AreEqual(expected, actual);
         }
@@ -21,10 +34,9 @@ namespace BinaryTree.Tests
         {
             var input = new string[] { "4, 12, 10, 18, 24, 22, 15" };
             var expected = new int[] { 4, 12, 10, 18, 24, 22, 15 };
-
-            var inputValidator = new InputParser();
+                        
             List<int> actual;
-            inputValidator.ParseInput(input, out actual);
+            _inputParser.ParseInput(input, out actual);
 
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -34,10 +46,9 @@ namespace BinaryTree.Tests
         {
             var input = new string[] { "R, 12, 10, 18, 24, 22, 15" };
             bool expected = false;
-
-            var inputValidator = new InputParser();
+                        
             List<int> validatedInput;
-            bool actual = inputValidator.ParseInput(input, out validatedInput);
+            bool actual = _inputParser.ParseInput(input, out validatedInput);
 
             Assert.AreEqual(expected, actual);
         }
@@ -47,10 +58,9 @@ namespace BinaryTree.Tests
         {
             var input = new string[] { "-4, 12, 10, 18, 24, 22, 15" };
             bool expected = false;
-
-            var inputValidator = new InputParser();
+                        
             List<int> validatedInput;
-            bool actual = inputValidator.ParseInput(input, out validatedInput);
+            bool actual = _inputParser.ParseInput(input, out validatedInput);
 
             Assert.AreEqual(expected, actual);
         }
@@ -61,9 +71,8 @@ namespace BinaryTree.Tests
             var input = new string[] {  };
             bool expected = false;
 
-            var inputValidator = new InputParser();
             List<int> validatedInput;
-            bool actual = inputValidator.ParseInput(input, out validatedInput);
+            bool actual = _inputParser.ParseInput(input, out validatedInput);
 
             Assert.AreEqual(expected, actual);
         }

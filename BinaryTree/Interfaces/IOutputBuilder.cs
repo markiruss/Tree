@@ -8,6 +8,6 @@ namespace BinaryTree.Interfaces
 {
     public interface IOutputBuilder
     {
-        string BuildOutput(ITree tree);
+        string BuildOutput(BinaryTree tree);
     }
 }

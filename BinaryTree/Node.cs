@@ -2,14 +2,14 @@
 
 namespace BinaryTree
 {
-    public class Tree : ITree
+    public class Node
     {
-        public Tree(int num)
+        public Node(int num)
         {
             Value = num;
         }
         
-        public Tree()
+        public Node()
         {
             
         }
@@ -20,7 +20,7 @@ namespace BinaryTree
             {
                 if(LeftNode == null)
                 {
-                    LeftNode = new Tree(num);
+                    LeftNode = new Node(num);
                 }
                 else
                 {
@@ -31,7 +31,7 @@ namespace BinaryTree
             {
                 if (RightNode == null)
                 {
-                    RightNode = new Tree(num);
+                    RightNode = new Node(num);
                 }
                 else
                 {
@@ -63,7 +63,7 @@ namespace BinaryTree
 
         public int Value { get; set; }
 
-        public Tree? LeftNode { get; set; }
-        public Tree? RightNode { get; set; }
+        public Node? LeftNode { get; set; }
+        public Node? RightNode { get; set; }
     }
 }
