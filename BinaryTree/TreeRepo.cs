@@ -1,10 +1,11 @@
-﻿using System.Text.Json;
+﻿using BinaryTree.Interfaces;
+using System.Text.Json;
 
 namespace BinaryTree
 {
-    public class TreeRepo
+    public class TreeRepo : ITreeRepo
     {
-        public async Task<string> SaveTree(Tree tree)
+        public async Task<string> SaveTree(ITree tree)
         {
             string jsonTree = JsonSerializer.Serialize(tree, new JsonSerializerOptions { WriteIndented = true });
             string fileName = $"Tree{DateTime.UtcNow.Ticks}.json";
@@ -12,7 +13,7 @@ namespace BinaryTree
             return fileName;
         }
 
-        public async Task<Tree?> ReadTree(string filePath)
+        public async Task<ITree?> ReadTree(string filePath)
         {
             string jsonTree = await File.ReadAllTextAsync(filePath);
             var tree = JsonSerializer.Deserialize<Tree>(jsonTree);

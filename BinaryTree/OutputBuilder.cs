@@ -1,10 +1,11 @@
-﻿using System.Text;
+﻿using BinaryTree.Interfaces;
+using System.Text;
 
 namespace BinaryTree
 {
-    public class OutputBuilder
+    public class OutputBuilder : IOutputBuilder
     {
-        public string BuildOutput(Tree tree)
+        public string BuildOutput(ITree tree)
         {
             var sb = new StringBuilder();
 

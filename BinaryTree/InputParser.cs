@@ -1,6 +1,8 @@
-﻿namespace BinaryTree
+﻿using BinaryTree.Interfaces;
+
+namespace BinaryTree
 {
-    public class InputParser
+    public class InputParser : IInputParser
     {
         public bool ParseInput(string[] args, out List<int> parsedInput)
         {

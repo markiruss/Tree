@@ -1,31 +1,24 @@
-﻿namespace BinaryTree
+﻿using BinaryTree.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace BinaryTree
 {
     internal class Program
     {
         static async Task Main(string[] args)
         {
-            var inputParser = new InputParser();
-            List<int> listOfInts;
-            if(!inputParser.ParseInput(args, out listOfInts))
-            {
-                Console.WriteLine("Please supply a comma separated list of positive numbers as an argument");
-                return;
-            }
+            var serviceProvider = new ServiceCollection()
+            
+            .AddSingleton<IInputParser, InputParser>()
+            .AddSingleton<IOutputBuilder, OutputBuilder>()
+            .AddSingleton<ITreeRepo, TreeRepo>()
+            .AddSingleton<IWorker, Worker>()
+            .AddTransient<ITree, Tree>()
+            .BuildServiceProvider();
 
-            var tree = new Tree(listOfInts[0]);
+            var worker = serviceProvider.GetService<IWorker>();
 
-            for(int i = 1; i < listOfInts.Count; i++)
-            {
-                tree.Insert(listOfInts[i]);
-            }
-
-            var treeRepo = new TreeRepo();
-            await treeRepo.SaveTree(tree);            
-
-            var outputBuilder = new OutputBuilder();
-            string output = outputBuilder.BuildOutput(tree);
-
-            Console.WriteLine(output);
+            await worker.DoWork(args);
         }       
     }
 }

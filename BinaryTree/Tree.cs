@@ -1,6 +1,8 @@
-﻿namespace BinaryTree
+﻿using BinaryTree.Interfaces;
+
+namespace BinaryTree
 {
-    public class Tree
+    public class Tree : ITree
     {
         public Tree(int num)
         {
