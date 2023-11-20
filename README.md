@@ -18,4 +18,4 @@ The test project is called BinaryTree.Tests. This depends on the MSTest framewor
 
 ## Roadmap
 
-Configure dependency injection for all the dependencies.
+Configure dependency injection for all the dependencies. 
